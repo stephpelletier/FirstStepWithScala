@@ -15,7 +15,7 @@ object main {
 		}
 	}
 	
-	def calculateDistanceBetweenStrings(string1:String, string2:String) {
+	def calculateDistanceBetweenStrings(string1:String, string2:String): Array[Array[Int]] = {
 		var lengthOfStringOne = string1.length()
 		var lengthOfStringTwo = string2.length()
 		
@@ -33,5 +33,11 @@ object main {
 		}
 		
 		return distancesArray
+	}
+	
+	def getArrayFromString(string:String) : Array[String] = {
+	  var array:Array[String] = ofDim(string.length())
+	  
+	  return array
 	}
 }
