@@ -1,5 +1,6 @@
 package main
 import Array._
+import Math._
 
 
 object main {
@@ -32,12 +33,24 @@ object main {
 		  distancesArray(0)(j) = j
 		}
 		
+		var arrayOfString1 = string1.toArray
+		var arrayOfString2 = string2.toArray
+		
+		for(i <- 1 to lengthOfStringOne+1) {
+		  for(j <- 1 to lengthOfStringTwo+1){
+		    if(arrayOfString1(i-1)== arrayOfString2(j-1)){
+		      distancesArray(i)(j) = distancesArray(i-1)(j-1)
+		    }
+		    else {
+		      distancesArray(i)(j) = min(min(distancesArray(i)(j-1),distancesArray(i-1)(j)),distancesArray(i-1)(j-1))
+		    }
+		  }
+		}
+		
 		return distancesArray
 	}
 	
-	def getArrayFromString(string:String) : Array[String] = {
-	  var array:Array[String] = ofDim(string.length())
+	def findMinDistanceBetweenTwoStrings(distanceArray:Array[Array[Int]], n:Int, m:Int): Unit = {
 	  
-	  return array
 	}
 }
