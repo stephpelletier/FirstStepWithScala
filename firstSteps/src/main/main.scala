@@ -1,4 +1,6 @@
 package main
+import Array._
+
 
 object main {
 	def main(args: Array[String]) {
@@ -11,5 +13,25 @@ object main {
 		  val string2 = readLine()
 		  println(string1 + string2)
 		}
+	}
+	
+	def calculateDistanceBetweenStrings(string1:String, string2:String) {
+		var lengthOfStringOne = string1.length()
+		var lengthOfStringTwo = string2.length()
+		
+		var distancesArray = ofDim[Int](lengthOfStringOne+1,lengthOfStringTwo+1)
+		
+		var i = 0
+		var j = 0
+		
+		for(i <- 0 to lengthOfStringOne) {
+		  distancesArray(i)(0) = 0
+		}
+		
+		for(j <- 1 to lengthOfStringTwo) {
+		  distancesArray(0)(j) = j
+		}
+		
+		return distancesArray
 	}
 }
