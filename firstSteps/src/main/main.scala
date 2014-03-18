@@ -12,7 +12,10 @@ object main {
 		  val string1 = readLine()
 		  println("Please input string two: ")
 		  val string2 = readLine()
-		  println(string1 + string2)
+		  
+		  var array:Array[Array[Int]] = calculateDistanceBetweenStrings(string1, string2)
+		  
+		  findMinDistanceBetweenTwoStrings(array, string1.toArray, string2.toArray)
 		}
 	}
 	
@@ -50,7 +53,29 @@ object main {
 		return distancesArray
 	}
 	
-	def findMinDistanceBetweenTwoStrings(distanceArray:Array[Array[Int]], n:Int, m:Int): Unit = {
-	  
+	def findMinDistanceBetweenTwoStrings(distanceArray:Array[Array[Int]], n:Array[Char], m:Array[Char]): Unit = {
+	
+	  var i = n.length + 1
+	  var j = m.length + 1
+	
+	  while(i > 0 || j > 0) {
+	    if(i>0 && j>0 && n(i-1) == m(j-1)) {
+	      println("Copy of "+n(i-1))
+	      i = i-1
+	      j = j-1
+	    } else {
+	      if(j > 0 && distanceArray(i)(j) == distanceArray(i)(j-1)+1){
+	        println("Insert of "+m(j-1))
+	        j = j-1
+	      } else if(i>0 && distanceArray(i)(j) == distanceArray(i+1)(j)+1){
+	        println("Suppression of "+n(i-1))
+	        i = i-1
+	      } else {
+	    	  println("Substitution of "+n(i-1)+" with "+m(j-1))
+	          i = i-1
+	          j = j-1
+	      }
+	    }
+	  }
 	}
 }
